@@ -27,7 +27,8 @@ class LoginScreen extends StatelessWidget {
               minHeight: MediaQuery.of(context).size.height,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 50.0, horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -77,32 +78,47 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   ElevatedButton(
-                    onPressed: loginModel.email.isEmpty || loginModel.password.isEmpty
-                        ? null
-                        : () {
-                            loginModel.login();
-
-                            if (loginModel.loggedIn) {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomeScreen(),
-                                ),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'Email atau Password tidak valid.',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                            }
-                          },
+                    onPressed: () async {
+                      try {
+                        // Check if email and password are empty
+                        if (loginModel.email.isEmpty ||
+                            loginModel.password.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Email dan Password tidak boleh kosong',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        } else {
+                          // Attempt to log in
+                          bool isLoggedIn = await loginModel.login();
+                          if (isLoggedIn) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ),
+                            );
+                          }
+                        }
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              e.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50.0, vertical: 15.0),
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -120,4 +136,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

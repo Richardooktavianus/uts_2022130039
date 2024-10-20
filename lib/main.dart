@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:uts_2022130039/home_screen.dart';
 import 'package:uts_2022130039/login_screen.dart';
 
 import 'provider/login_setting.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
        debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }
