@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uts_2022130039/login_screen.dart';
+import 'package:uts_2022130039/provider/cart_provider.dart';
 
 import 'provider/login_setting.dart';
 
@@ -9,6 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LoginSetting()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: const MyApp(),
     ),
