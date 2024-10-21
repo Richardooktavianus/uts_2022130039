@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 
-class LoginSetting with ChangeNotifier {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
 
-  String get email => emailController.text;
-  String get password => passwordController.text;
+class LoginSetting with ChangeNotifier {
+  String _email = '';
+  String _password = '';
+
+  set email(String email) {
+    _email = email;
+    notifyListeners();
+  }
+
+  set password(String password) {
+    _password = password;
+    notifyListeners();
+  }
 
   Future<bool> login() async {
-    // Simulate a login process
-    if (email == 'user@example.com' && password == 'password') {
-      // Simulate successful login
+    if (_email == 'neko@neko.com' && _password == 'password123') {
       return true;
     } else {
-      // Simulate failed login
-      throw Exception('Invalid email or password');
+      return false;
     }
   }
 }
