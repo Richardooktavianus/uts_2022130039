@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:uts_2022130039/cart_screen.dart';
 import 'package:uts_2022130039/model/produk.dart';
 import 'package:uts_2022130039/produk_screen.dart';
 import 'package:uts_2022130039/provider/cart_provider.dart';
 
-
-
 class HomeScreen extends StatelessWidget {
+  get child => null;
+
   @override
   Widget build(BuildContext context) {
     // Example product data
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         title: 'Product A',
         description: 'This is a description for Product A.',
         price: 9999.999,
-        image: 'product_0.png',
+        image: 'ipon.jpg',
       ),
       Product(
         id: 2,
