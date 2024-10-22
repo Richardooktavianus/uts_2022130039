@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:uts_2022130039/home_screen.dart';
 import 'package:uts_2022130039/login_screen.dart';
 import 'package:uts_2022130039/provider/cart_provider.dart';
 
@@ -25,8 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }

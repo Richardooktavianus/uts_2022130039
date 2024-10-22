@@ -25,7 +25,7 @@ class CartScreen extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       leading: Image.asset(
-                        'assets/images/${cartItem.product.image}',
+                        'img/${cartItem.product.image}',
                         fit: BoxFit.cover,
                         width: 50,
                       ),
