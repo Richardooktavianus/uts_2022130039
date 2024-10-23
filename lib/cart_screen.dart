@@ -32,9 +32,21 @@ class CartScreen extends StatelessWidget {
                       title: Text(cartItem.product.title),
                       subtitle: Text(
                           'Rp ${cartItem.product.price.toStringAsFixed(3)} x ${cartItem.quantity}'),
-                      trailing: Text(
-                        'Rp ${(cartItem.product.price * cartItem.quantity).toStringAsFixed(3)}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Tambahkan tombol hapus
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              cartProvider.removeFromCart(cartItem);
+                            },
+                          ),
+                          Text(
+                            'Rp ${(cartItem.product.price * cartItem.quantity).toStringAsFixed(3)}',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -61,7 +73,6 @@ class CartScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Handle checkout process
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red.shade400,

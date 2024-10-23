@@ -4,10 +4,10 @@ import 'package:uts_2022130039/cart_screen.dart';
 import 'package:uts_2022130039/model/produk.dart';
 import 'package:uts_2022130039/produk_screen.dart';
 import 'package:uts_2022130039/provider/cart_provider.dart';
+import 'package:uts_2022130039/provider/search_provider.dart';
+import 'package:uts_2022130039/setting_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  get child => null;
-
   @override
   Widget build(BuildContext context) {
     final products = [
@@ -65,19 +65,56 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Our products'),
+        title: const Text('Our Products'),
+        backgroundColor: Colors.red.shade400,
         actions: [
+          // Tambah ikon pencarian di AppBar
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
+            icon: Icon(Icons.search),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
+              showSearch(
+                context: context,
+                delegate: ProductSearchDelegate(products),
               );
             },
           ),
         ],
-        backgroundColor: Colors.red.shade400,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.red.shade400,
+              ),
+              child: const Text(
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: const Text('Cart'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartScreen()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

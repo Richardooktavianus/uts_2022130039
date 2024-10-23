@@ -10,6 +10,7 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+        height: 1000,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.black, Colors.red[900]!],
@@ -21,12 +22,9 @@ class LoginScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
-                  height: 100,
-                  child: Image.asset('img/logo.png'),
-                ),
+                Image.asset('img/ass.png'),
                 SizedBox(height: 20),
                 Text(
                   'Welcome to Nekoshop',

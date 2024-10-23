@@ -24,4 +24,9 @@ class CartProvider with ChangeNotifier {
     }
     return total;
   }
+
+   void removeFromCart(CartItem cartItem) {
+    _cartItems.remove(cartItem);
+    notifyListeners();
+  }
 }
