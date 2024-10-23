@@ -13,7 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginSetting()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
-         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: MyApp(),
     ),

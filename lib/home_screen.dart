@@ -68,7 +68,6 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Our Products'),
         backgroundColor: Colors.red.shade400,
         actions: [
-          // Tambah ikon pencarian di AppBar
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
@@ -138,28 +137,45 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Card(
-                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                elevation: 6,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Expanded(
-                      child: Image.asset(
-                        'img/${product.image}',
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(15)),
+                        child: Image.asset(
+                          'img/${product.image}',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
                       child: Text(
                         product.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
                       child: Text(
                         'Rp ${product.price.toStringAsFixed(3)}',
-                        style: const TextStyle(color: Colors.red),
+                        style: const TextStyle(
+                          color: Colors.redAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
