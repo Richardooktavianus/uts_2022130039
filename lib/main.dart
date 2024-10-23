@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:uts_2022130039/home_screen.dart';
 import 'package:uts_2022130039/login_screen.dart';
 import 'package:uts_2022130039/provider/cart_provider.dart';
+import 'package:uts_2022130039/provider/theme_provider.dart';
 
 import 'provider/login_setting.dart';
 
@@ -12,21 +13,22 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginSetting()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
+         ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
+      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: LoginScreen(),
     );
   }
